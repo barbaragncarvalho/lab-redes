@@ -8,3 +8,8 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# Sistema
+Thumbs.db
+desktop.ini
+"@ | Set-Content -Path .gitignore -Encoding utf8
