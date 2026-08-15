@@ -22,3 +22,5 @@ Como o UDP envia os dados e não confirma recebimento, o cliente não sabe o est
 
 3. É possível implementar um registro de "quem está conectado", mas, para isso, teria que se ter uma lista com o IP e porta dos dispositivos que enviaram mensagens e implementar uma forma do cliente, a cada determinado tempo, enviar uma mensagem informando que ainda está ativo na conexão. Caso extrapole o tempo sem enviar nada, a conexão deve ser derrubada e esse dispositivo seria excluído da lista.
 
+
+3. Se um dos clientes ficar temporariamente offline e voltar depois ele não recebe os avisos perdidos, porque, no multicast, os dados são transmitido em tempo real e de maneira não orientada a conexão (baseado em UDP). Além disso, ele não guarda cópias das mensagens, não sabe quem estava ouvindo na hora do envio e não possui mecanismo de retransmissão. 
