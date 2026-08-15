@@ -22,5 +22,10 @@ Como o UDP envia os dados e não confirma recebimento, o cliente não sabe o est
 
 3. É possível implementar um registro de "quem está conectado", mas, para isso, teria que se ter uma lista com o IP e porta dos dispositivos que enviaram mensagens e implementar uma forma do cliente, a cada determinado tempo, enviar uma mensagem informando que ainda está ativo na conexão. Caso extrapole o tempo sem enviar nada, a conexão deve ser derrubada e esse dispositivo seria excluído da lista.
 
+## Parte C
+
+1. A diferença entre enviar a mesma mensagem para 3 clientes usando unicast repetido 3 vezes e enviar uma única vez via multicast é que, no unicast, o remetente precisa enviar três cópias separadas da mesma mensagem, uma para cada cliente, o que significa que o computador gasta três vezes mais processamento e mais largura de banda. Já no multicast, o remetente envia a mensagem apenas uma única vez para o endereço do grupo, o que economiza muito tráfego de saída no servidor e evita sobrecarregar a rede.
+
+2. O TTL (Time-To-Live) é um contador de saltos por roteadores que indica até onde o pacote tem permissão de ir antes de ser descartado. Assim, cada vez que a mensagem atravessa um roteador, esse valor diminui em 1 e, quando chega a zero, o pacote é descartado. Ele é fundamental para controlar o alcance da rede, pois garante que um pacote vá somente até onde precisa, sem ficar em loop de existência, já que terá um tempo limite até esgotar.
 
 3. Se um dos clientes ficar temporariamente offline e voltar depois ele não recebe os avisos perdidos, porque, no multicast, os dados são transmitido em tempo real e de maneira não orientada a conexão (baseado em UDP). Além disso, ele não guarda cópias das mensagens, não sabe quem estava ouvindo na hora do envio e não possui mecanismo de retransmissão. 
