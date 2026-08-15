@@ -16,7 +16,7 @@ No TCP, como a conexão precisa estar previamente estabelecida e mantida viva, t
 
 Como o UDP envia os dados e não confirma recebimento, o cliente não sabe o estado do servidor no momento do envio. Assim, ele só fica travado, porque a aplicação cliente fica esperando por um pacote de volta.
 
-1. Dois exemplos de aplicações que usam UDP são:
+2. Dois exemplos de aplicações que usam UDP são:
    - Discord: como é uma plataforma de streamming de vídeo/áudio, é mais importante a baixa latência e a entrega contínua dos dados do que a confiabilidade de entrega de todos eles, já que perder um ou outro dado não afeta drasticamente a experiência do usuário. Assim, se fosse usado o TCP, caso ocorresse perda de pacotes, os atrasos na reprodução do vídeo/áudio para reenviar pacotes perdidos seria perceptível.
    - Jogos em tempo real online: como o estado dos objetos que compõem o jogo são atualizados frequentemente a cada movimento do jogador, é mais relevante mostrar o estado atual do que retransmitir um pacote de dados perdido lá atrás na conexão. Neste caso, a confiabilidade do TCP também impactaria negativamente a experiência do usuário, já que o tempo gasto tentando recuperar pacotes defasados causaria travamentos e atrasos na sincronização do jogo, prejudicando diretamente a jogabilidade. O que realmente importa nesses cenários é a sincronia imediata com o estado presente.
 
